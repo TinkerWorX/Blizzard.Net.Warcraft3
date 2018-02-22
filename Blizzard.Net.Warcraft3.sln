@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blizzard.Net.Warcraft3", "Blizzard.Net.Warcraft3\Blizzard.Net.Warcraft3.csproj", "{1439ED9B-5AB6-4657-B007-DD4A294378DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamerCasterDemo", "StreamerCasterDemo\StreamerCasterDemo.csproj", "{B01EE667-CB26-4BD1-9087-ECFEC3A919C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1439ED9B-5AB6-4657-B007-DD4A294378DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1439ED9B-5AB6-4657-B007-DD4A294378DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1439ED9B-5AB6-4657-B007-DD4A294378DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1439ED9B-5AB6-4657-B007-DD4A294378DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B01EE667-CB26-4BD1-9087-ECFEC3A919C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B01EE667-CB26-4BD1-9087-ECFEC3A919C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B01EE667-CB26-4BD1-9087-ECFEC3A919C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B01EE667-CB26-4BD1-9087-ECFEC3A919C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {68EE5D29-F68B-4D37-B7A9-8D5531226CEA}
+	EndGlobalSection
+EndGlobal
