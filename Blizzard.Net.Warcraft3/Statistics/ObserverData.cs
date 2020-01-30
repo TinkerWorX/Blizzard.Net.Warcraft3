@@ -1,9 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.IO.MemoryMappedFiles;
 
 namespace Blizzard.Net.Warcraft3.Statistics
 {
-    public class ObserverData
+    public class ObserverData : IDisposable
     {
         public const int MAX_PLAYERS = 28;
 
@@ -33,18 +34,47 @@ namespace Blizzard.Net.Warcraft3.Statistics
 
         public const string MEMORY_MAPPED_FILENAME = "War3StatsObserverSharedMemory";
 
+        public static bool TryOpen(out ObserverData observerData)
+        {
+            try
+            {
+                var memoryMappedFile = MemoryMappedFile.OpenExisting(MEMORY_MAPPED_FILENAME, MemoryMappedFileRights.ReadWrite);
+                observerData = new ObserverData(memoryMappedFile);
+                return true;
+            }
+            catch (FileNotFoundException)
+            {
+                observerData = null;
+                return false;
+            }
+        }
+
+        private readonly MemoryMappedFile memoryMappedFile;
+
+        private readonly MemoryMappedViewAccessor mappedViewAccessor;
+
         private readonly unsafe byte* data;
 
-        public ObserverData()
+        public ObserverData(MemoryMappedFile memoryMappedFile)
         {
-            var memoryMappedFile = MemoryMappedFile.OpenExisting(MEMORY_MAPPED_FILENAME);
-            var mappedViewAccessor = memoryMappedFile.CreateViewAccessor();
+            this.memoryMappedFile = memoryMappedFile;
+            this.mappedViewAccessor = memoryMappedFile.CreateViewAccessor();
             unsafe
             {
                 var pointer = (byte*)0;
                 mappedViewAccessor.SafeMemoryMappedViewHandle.AcquirePointer(ref pointer);
                 this.data = pointer;
             }
+        }
+
+        public ObserverData()
+            : this(MemoryMappedFile.OpenExisting(MEMORY_MAPPED_FILENAME, MemoryMappedFileRights.ReadWrite))
+        { }
+
+        public void Dispose()
+        {
+            this.mappedViewAccessor.Dispose();
+            this.memoryMappedFile.Dispose();
         }
 
         /// <summary>
