@@ -20,6 +20,9 @@ namespace Blizzard.Net.Warcraft3.Statistics
                         Thread.Sleep(1000);
                         continue;
                     }
+
+                    // set the refresh rate to 200 to enable the observer api
+                    file.RefreshRate = 200;
                 }
                 else
                 {
